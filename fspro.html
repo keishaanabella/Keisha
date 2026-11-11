@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luxury Editorial Hero Section</title>
+  
+  <!-- Google Fonts: Instrument Serif & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* CSS Resets & Variables */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --color-primary-text: #0f172a;
+      --color-muted-text: hsl(215, 25%, 32%);
+      --color-btn-bg: #000000;
+      --color-btn-text: #ffffff;
+      --color-fallback-bg: hsl(201, 100%, 13%);
+      --font-serif: 'Instrument Serif', serif;
+      --font-sans: 'Inter', sans-serif;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      color: var(--color-primary-text);
+      background-color: var(--color-fallback-bg);
+      overflow-x: hidden;
+    }
+
+    /* Hero Main Container */
+    .hero-container {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Background Video & Overlay */
+    .video-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    .video-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.2);
+      z-index: 1;
+    }
+
+    /* Navigation Bar */
+    .navbar {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 1280px;
+      padding: 24px 32px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+    }
+
+    .brand-logo {
+      font-family: var(--font-serif);
+      font-size: 30px;
+      font-weight: 400;
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    .brand-logo sup {
+      font-size: 14px;
+      vertical-align: super;
+    }
+
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      list-style: none;
+    }
+
+    .nav-link {
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 500;
+      color: #ffffff;
+      text-decoration: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .nav-link:hover {
+      opacity: 0.7;
+    }
+
+    /* Pill Buttons Styling */
+    .btn-pill {
+      display: inline-block;
+      background-color: var(--color-btn-bg);
+      color: var(--color-btn-text);
+      border-radius: 9999px;
+      border: none;
+      text-decoration: none;
+      font-family: var(--font-sans);
+      font-weight: 500;
+      cursor: pointer;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .btn-pill:hover {
+      transform: scale(1.03);
+    }
+
+    .btn-nav {
+      padding: 10px 24px;
+      font-size: 14px;
+    }
+
+    .btn-hero {
+      padding: 20px 56px;
+      font-size: 16px;
+      margin-top: 48px;
+    }
+
+    /* Hero Center Content */
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 24px;
+      margin: auto 0;
+      max-width: 900px;
+    }
+
+    .hero-heading {
+      font-family: var(--font-serif);
+      font-size: 80px;
+      font-weight: 400;
+      line-height: 0.95;
+      letter-spacing: -2.46px;
+      color: #ffffff;
+      margin-bottom: 24px;
+    }
+
+    .hero-heading em {
+      font-style: italic;
+    }
+
+    .hero-paragraph {
+      font-family: var(--font-sans);
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.625;
+      color: var(--color-muted-text);
+      max-width: 670px;
+    }
+
+    /* Keyframes & Entrance Animations */
+    @keyframes fade-rise {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-rise {
+      animation: fade-rise 0.8s ease-out forwards;
+      opacity: 0; /* Ensures element is invisible before animation starts */
+    }
+
+    .delay-0 {
+      animation-delay: 0s;
+    }
+
+    .delay-200 {
+      animation-delay: 0.2s;
+    }
+
+    .delay-400 {
+      animation-delay: 0.4s;
+    }
+
+    /* Responsive Mobile Styles */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none; /* Hide center nav on mobile */
+      }
+      
+      .navbar {
+        grid-template-columns: 1fr auto;
+      }
+
+      .hero-heading {
+        font-size: 48px;
+      }
+
+      .hero-paragraph {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hero-container">
+    <!-- Background Video -->
+    <video class="video-background" autoplay loop muted playsinline>
+      <source src="https://designerstephen.github.io/public-assets/videos/serene-art-hero.mp4" type="video/mp4">
+    </video>
+    <div class="video-overlay"></div>
+
+    <!-- Navigation Bar -->
+    <header class="navbar">
+      <a href="#" class="brand-logo">HOLIS<sup>®</sup></a>
+      
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#" class="nav-link">Exhibitions</a></li>
+          <li><a href="#" class="nav-link">Collections</a></li>
+          <li><a href="#" class="nav-link">Editorial</a></li>
+          <li><a href="#" class="nav-link">About</a></li>
+        </ul>
+      </nav>
+
+      <a href="#" class="btn-pill btn-nav">FSPro IRL</a>
+    </header>
+
+    <!-- Main Hero Content -->
+    <main class="hero-content">
+      <h1 class="hero-heading animate-rise delay-0">
+        Abraham, <em>Jill,</em> Keisha
+      </h1>
+      
+      <p class="hero-paragraph animate-rise delay-200">
+        Kelas 12
+      </p>
+
+      <a href="#" class="btn-pill btn-hero animate-rise delay-400">
+        FSPro IRL
+      </a>
+    </main>
+
+    <!-- Spacer div to keep grid balance -->
+    <div style="height: 24px; z-index: 2;"></div>
+  </div>
+
+</body>
+</html>
